@@ -1,8 +1,22 @@
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Clock, Phone, Facebook, Instagram, Twitter } from "lucide-react";
 
 const Index = () => {
+  const codepenRef = useRef(null);
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://cpwebassets.codepen.io/assets/embed/ei.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header Section */}
@@ -29,6 +43,46 @@ const Index = () => {
         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white">
           <h1 className="text-4xl font-bold mb-2">Discover Our Signature Drinks</h1>
           <p className="text-xl">Indulge in our handcrafted cocktails and unique flavors</p>
+        </div>
+      </section>
+
+      {/* CodePen Embed Section */}
+      <section className="py-12 bg-gray-100">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-8">Featured Slider</h2>
+          <Card>
+            <CardContent className="p-6">
+              <div ref={codepenRef}>
+                <p
+                  className="codepen"
+                  data-height="300"
+                  data-default-tab="result"
+                  data-slug-hash="LYKbVNE"
+                  data-user="Marc-Agbay-the-scripter"
+                  style={{
+                    height: '300px',
+                    boxSizing: 'border-box',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '2px solid',
+                    margin: '1em 0',
+                    padding: '1em',
+                  }}
+                >
+                  <span>
+                    See the Pen{' '}
+                    <a href="https://codepen.io/Marc-Agbay-the-scripter/pen/LYKbVNE">
+                      Responsive GSAP Slider with Button Wave Effect
+                    </a>{' '}
+                    by Marc Roland Agbay (
+                    <a href="https://codepen.io/Marc-Agbay-the-scripter">@Marc-Agbay-the-scripter</a>) on{' '}
+                    <a href="https://codepen.io">CodePen</a>.
+                  </span>
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
